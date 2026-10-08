@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Một món quà nhỏ 🎁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- ============ SCREEN 1 — CAKE ============ -->
+<section id="screen-cake" class="screen active">
+  <div class="cake-wrap" id="cake" role="button" tabindex="0" aria-label="Chạm vào bánh để mở quà">
+    <svg class="cake-svg" viewBox="0 0 300 260" aria-hidden="true">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#fff7e6" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#fff7e6" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="icing" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff5f7"/>
+          <stop offset="100%" stop-color="#ffd6e0"/>
+        </linearGradient>
+        <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffe4c4"/>
+          <stop offset="100%" stop-color="#f4c9a3"/>
+        </linearGradient>
+      </defs>
+
+      <ellipse cx="150" cy="150" rx="140" ry="120" fill="url(#glow)"/>
+
+      <g id="candles">
+        <rect x="118" y="60" width="8" height="42" rx="2" fill="#f7c8d8"/>
+        <rect x="146" y="50" width="8" height="52" rx="2" fill="#c8d8f7"/>
+        <rect x="174" y="60" width="8" height="42" rx="2" fill="#d8f7c8"/>
+        <ellipse class="flame" cx="122" cy="54" rx="4" ry="8" fill="#ffd27a"/>
+        <ellipse class="flame" cx="150" cy="44" rx="4" ry="8" fill="#ffd27a"/>
+        <ellipse class="flame" cx="178" cy="54" rx="4" ry="8" fill="#ffd27a"/>
+        <ellipse class="flame-inner" cx="122" cy="55" rx="2" ry="4" fill="#fff6c8"/>
+        <ellipse class="flame-inner" cx="150" cy="45" rx="2" ry="4" fill="#fff6c8"/>
+        <ellipse class="flame-inner" cx="178" cy="55" rx="2" ry="4" fill="#fff6c8"/>
+      </g>
+
+      <path d="M70 120 Q150 90 230 120 L230 150 L70 150 Z" fill="url(#icing)"/>
+      <path d="M70 120 Q150 90 230 120" fill="none" stroke="#f7c8d8" stroke-width="2"/>
+      <path d="M50 150 Q150 120 250 150 L250 210 Q150 230 50 210 Z" fill="url(#base)"/>
+      <path d="M50 150 Q150 120 250 150" fill="none" stroke="#e9b48c" stroke-width="2"/>
+
+      <circle cx="90" cy="170" r="2.5" fill="#f7a8c0"/>
+      <circle cx="130" cy="180" r="2.5" fill="#a8c0f7"/>
+      <circle cx="170" cy="170" r="2.5" fill="#c0f7a8"/>
+      <circle cx="210" cy="185" r="2.5" fill="#f7d9a8"/>
+      <circle cx="110" cy="195" r="2.5" fill="#d9a8f7"/>
+      <circle cx="190" cy="200" r="2.5" fill="#a8f7e6"/>
+    </svg>
+
+    <div class="sparkles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <p class="hint">Chạm vào chiếc bánh để mở món quà 🎂</p>
+</section>
+
+<!-- ============ SCREEN 2 — PASSWORD ============ -->
+<section id="screen-password" class="screen">
+  <div class="gift-box">
+    <div class="gift-lid" aria-hidden="true"></div>
+    <div class="gift-body">
+      <h2 class="gift-title">🎁 Một món quà đang chờ bạn...</h2>
+      <p class="gift-sub">Nhập mật khẩu để mở bức thư</p>
+
+      <form id="pw-form" autocomplete="off">
+        <input
+          id="pw-input"
+          type="password"
+          inputmode="numeric"
+          placeholder="• • • • • • • •"
+          aria-label="Mật khẩu"
+          maxlength="12"
+        />
+        <button type="submit" class="open-btn">Mở thư 💌</button>
+      </form>
+
+      <p id="pw-error" class="pw-error" role="alert"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN 3 — LETTER ============ -->
+<section id="screen-letter" class="screen">
+  <div class="envelope" id="envelope">
+    <div class="env-back"></div>
+
+    <div class="env-flap" id="env-flap"></div>
+    <div class="wax-seal" id="wax-seal"></div>
+
+    <article class="env-letter" id="env-letter">
+      <div class="letter">
+        <header class="letter-head">
+          <h1 class="letter-h1">Happy Birthday 🎂</h1>
+          <p class="letter-h2">Chúc mừng sinh nhật!</p>
+        </header>
+
+        <div class="letter-body" id="letter-body"></div>
+
+        <footer class="letter-foot" id="letter-foot">
+          <p class="letter-final">Happy Birthday! 🎉❤️</p>
+          <p class="letter-small">Chúc bạn có một ngày sinh nhật thật đáng nhớ.</p>
+        </footer>
+      </div>
+    </article>
+  </div>
+</section>
+
+<button id="music-toggle" class="music-toggle" aria-label="Bật/tắt nhạc">🔇</button>
+
+<audio id="bgm" loop preload="none">
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
